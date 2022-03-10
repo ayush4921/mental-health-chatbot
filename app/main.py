@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, Markup
 from flask_cors import CORS
-from service import create_bot, get_response
-from train import train_with_csv
-from train import train_with_corpus
+from mental_health_chatbot import create_bot, get_response, train_with_csv, train_with_corpus
 import os
 app = Flask(__name__)
 CORS(app)
