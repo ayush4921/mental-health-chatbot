@@ -2,3 +2,4 @@ ChatterBot
 Flask
 Flask_Cors
 gunicorn
+spacy
