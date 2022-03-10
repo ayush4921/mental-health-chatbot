@@ -3,7 +3,9 @@ from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 
 import csv
 
-
+import spacy
+from spacy.cli.download import download
+download(model="en_core_web_sm")
 def csv_to_train_data(csv_file_path, bot_col, resp_col):
     """
     Converts csv to training data
