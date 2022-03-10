@@ -5,13 +5,17 @@ import os
 app = Flask(__name__)
 CORS(app)
 bot = create_bot()
-train_with_corpus(bot, 'chatterbot.corpus.english.greetings')
-train_with_corpus(bot, 'chatterbot.corpus.english.botprofile')
-train_with_corpus(bot, 'chatterbot.corpus.english.emotion')
-train_with_corpus(bot, 'chatterbot.corpus.english.gossip')
-train_with_corpus(bot, 'chatterbot.corpus.english.health')
-train_with_corpus(bot, 'chatterbot.corpus.english.psychology')
-train_with_csv(bot, './data/mental_health_faq.csv')
+
+@app.route("/train", methods=["GET"])
+def train_model():
+    train_with_corpus(bot, 'chatterbot.corpus.english.greetings')
+    train_with_corpus(bot, 'chatterbot.corpus.english.botprofile')
+    train_with_corpus(bot, 'chatterbot.corpus.english.emotion')
+    train_with_corpus(bot, 'chatterbot.corpus.english.gossip')
+    train_with_corpus(bot, 'chatterbot.corpus.english.health')
+    train_with_corpus(bot, 'chatterbot.corpus.english.psychology')
+    train_with_csv(bot, './data/mental_health_faq.csv')
+
 @app.route("/", methods=["GET"])
 def return_home():
     return render_template('index.html')
